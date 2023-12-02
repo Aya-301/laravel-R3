@@ -90,7 +90,7 @@ Route::prefix ('Blog')->group (function(){
         return 'The Medical score is: ' . $score;
     })-> where (['score'=>'[0-9]+']);
 });
-//Second Lec
+//Second Lec  test
 Route::get('login', function(){
     return view ('login');
 });
