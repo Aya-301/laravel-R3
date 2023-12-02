@@ -54,7 +54,4 @@ Route::get('test4/{id?}/{Name}', function($id, $name){
 Route::get('product/{category}', function($cat){
     return 'The category is: ' . $cat;
 })-> wherein ('category',['pc', 'laptop', 'mobile']);
-Route::get('pro/{cat}', function($cat){
-    return 'The category is: ' . $cat;
-})-> wherein ('cat',['pc', 'laptop', 'mobile']);
 });
