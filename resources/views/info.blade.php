@@ -6,11 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h4> Welcome Aya </h4>
-    <p>Your subjects are :</p>
-    Sceince <br>
-    Sports <br>
-    Math <br>
-    Medical <br>
+    <h3> About That Task</h3>
+    <p> This task is about subjects and it's scores and how to apply it in links </p>
 </body>
 </html>
