@@ -6,10 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h3> Welcome User </h3>
+    <h4> Welcome Aya </h4>
     <p>Your subjects are :</p>
-    Sceince
-    Math
-    English
+    Sceince <br>
+    Math <br>
+    English <br>
 </body>
 </html>
