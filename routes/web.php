@@ -35,13 +35,13 @@ Route::get('test', function(){
 Route::get('test1/{id}', function($id){
     return 'The id is: ' . $id;
 });
-// Route::get('test2/{id?}', function($id = 0){
-//     return 'The id2 is: ' . $id;
-// })-> where (['id' => '[0-9]+']);
-//طريقة تانية عشان نحدد ان لازم يدخل رقم ف اللينك بديله للي فوق
 Route::get('test2/{id?}', function($id = 0){
     return 'The id2 is: ' . $id;
-})-> whereNumber ('id');
+})-> where (['id' => '[0-9]+']);
+//طريقة تانية عشان نحدد ان لازم يدخل رقم ف اللينك بديله للي فوق
+// Route::get('test2/{id?}', function($id = 0){
+//     return 'The id2 is: ' . $id;
+// })-> whereNumber ('id');
 //عشان نخلي القيمة حروف
 Route::get('test3/{Name?}', function($name = null){
     return 'The name is: ' . $name;
