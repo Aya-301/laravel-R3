@@ -23,6 +23,9 @@ Route::get('/', function () {
 Route::get('food', function(){
     return view ('task');
 });
+Route::get('subject', function(){
+    return view ('sub');
+});
 Route::prefix ('lar')->group (function(){
 //لإنشاء لينك 
 Route::get('/', function(){
