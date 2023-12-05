@@ -14,9 +14,14 @@
   <h2>Vertical (basic) form</h2>
   <form action="{{route('logged')}}" method="post">
     @csrf
+    <div class="ShowDataHere">
+        @if(!empty(request()->all()))
+            {{ request()->name }}
+        @endif
+    </div >
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
     </div>
     <div class="form-group">
       <label for="pwd">Password:</label>

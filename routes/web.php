@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,10 +92,18 @@ Route::prefix ('Blog')->group (function(){
     })-> where (['score'=>'[0-9]+']);
 });
 //Second Lec  test
+// Route::get('login', function(){
+//     return view ('login');
+// });
+// Route::post('logged', function(){
+//     return 'you are logged in';
+// })->name ('logged');
+// Route::get('control', [ExampleController::class,'show']);
+
+
+// second task
 Route::get('login', function(){
     return view ('login');
 });
-Route::post('logged', function(){
-    return 'you are logged in';
-})->name ('logged');
-Route::get('control', [ExampleController::class,'show']);
+
+Route::post('logged', [TaskController::class,'task'])->name ('logged');

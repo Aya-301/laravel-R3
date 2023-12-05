@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('title', 100);
             $table->longText('description');
             $table->boolean('published');
+            $table->timestamps();
+            
         });
     }
 
