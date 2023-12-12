@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,7 +93,7 @@ Route::prefix ('Blog')->group (function(){
         return 'The Medical score is: ' . $score;
     })-> where (['score'=>'[0-9]+']);
 });
-//Second Lec  test
+//third Lec  test
 // Route::get('login', function(){
 //     return view ('login');
 // });
@@ -107,3 +109,14 @@ Route::get('login', function(){
 });
 
 Route::post('logged', [TaskController::class,'task'])->name ('logged');
+
+//fourth lec
+
+// add data to db
+Route::post('storeCar', [CarController::class,'store'])->name ('storeCar');
+Route::get('createCar', [CarController::class,'create'])->name ('createCar');
+Route::get('cars', [CarController::class,'index']);
+
+//third task
+Route::post('storePost', [PostController::class,'store'])->name ('storePost');
+Route::get('addPost', [PostController::class,'create']);
