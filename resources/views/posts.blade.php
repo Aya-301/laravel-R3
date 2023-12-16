@@ -9,33 +9,25 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-@include('includes.nav')
+@include('includes.nav2')
 <div class="container">
-  <h2> Cars List</h2>            
+  <h2> Posts List</h2>            
   <table class="table table-hover">
     <thead>
       <tr>
         <th>Title</th>
-        <th>Description</th>
-        <th>Published</th>
+        <th>Create Date</th>
         <th>Update</th>
-        <th>Showef</th>
+        <th>Show</th>
       </tr>
     </thead>
     <tbody>
-        @foreach ($cars as $car)
+        @foreach ($posts as $post)
       <tr>
-        <td>{{$car->title}}</td>
-        <td>{{$car->description}}</td>
-        <td>
-            @if($car->published)
-            yes
-            @else 
-            No
-            @endif
-        </td>
-        <td><a href="updateCar/{{ $car->id }}">Edit</a></td>
-        <td><a href="showCar/{{ $car->id }}">Show</a></td>
+        <td>{{$post->title}}</td>
+        <td>{{$post->created_at}}</td>
+        <td><a href="updatePost/{{ $post->id }}">Edit</a></td>
+        <td><a href="showPost/{{ $post->id }}">Show</a></td>
       </tr>
       @endforeach
     </tbody>
