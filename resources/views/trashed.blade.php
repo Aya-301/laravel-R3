@@ -9,29 +9,34 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-@include('includes.nav2')
+@include('includes.nav')
 <div class="container">
-  <h2> Posts List</h2>            
+  <h2> Cars List</h2>            
   <table class="table table-hover">
     <thead>
       <tr>
         <th>Title</th>
-        <th>Create Date</th>
-        <th>Update</th>
-        <th>Delete</th>
-        <th>Show</th>
+        <th>Description</th>
+        <th>Published</th>
+         <th>Delete</th>
+         <th>Restore</th>
+       
       </tr>
     </thead>
     <tbody>
-        @foreach ($posts as $post)
+        @foreach ($cars as $car)
       <tr>
-        <td>{{$post->title}}</td>
-        <td>{{$post->created_at}}</td>
-        <td><a href="updatePost/{{ $post->id }}">Edit</a></td>
-        <td><a href="deletePost/{{ $post->id }}">Delete</a></td>
-        <td><a href="showPost/{{ $post->id }}">Show</a></td>
-        
-        
+        <td>{{$car->title}}</td>
+        <td>{{$car->description}}</td>
+        <td>
+            @if($car->published)
+            yes
+            @else 
+            No
+            @endif
+        </td>
+        <td><a href="forceDelete/{{ $car->id }}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
+        <td><a href="restoreCar/{{ $car->id }}" >Restore</a></td>
       </tr>
       @endforeach
     </tbody>

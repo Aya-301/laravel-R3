@@ -131,3 +131,8 @@ Route::get('posts', [PostController::class,'index'])->name('posts');
 Route::get('updatePost/{id}',[PostController::class, 'edit']);
 Route::put('update/{id}',[PostController::class, 'update'])->name('update');
 Route::get('showPost/{id}',[PostController::class, 'show']);
+//sixth lec
+Route::get('deleteCar/{id}',[CarController::class, 'destroy']);
+Route::get('trashed', [CarController::class,'trashed'])-> name('trashed');
+Route::get('forceDelete/{id}', [CarController::class,'forceDelete'])->name ('forceDelete');
+Route::get('restoreCar/{id}', [CarController::class,'restore'])-> name('restoreCar');
