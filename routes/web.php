@@ -136,3 +136,8 @@ Route::get('deleteCar/{id}',[CarController::class, 'destroy']);
 Route::get('trashed', [CarController::class,'trashed'])-> name('trashed');
 Route::get('forceDelete/{id}', [CarController::class,'forceDelete'])->name ('forceDelete');
 Route::get('restoreCar/{id}', [CarController::class,'restore'])-> name('restoreCar');
+//fifth task
+Route::get('deletePost/{id}', [PostController::class, 'destroy']);
+Route::get('postTrashed', [PostController::class, 'trashed'])-> name('postTrashed');
+Route::get('forceDelete/{id}', [PostController::class, 'forceDelete'])-> name('forceDelete');
+Route::get('postRestore/{id}', [PostController::class, 'restore'])-> name('postRestore');

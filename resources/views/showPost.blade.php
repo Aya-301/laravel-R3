@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>{{$post->title}}</h1>
-    <h2>{{$post->author}}</h2>
+    <h2>Author is: {{$post->author}}</h2>
     <h3>Created at: {{$post->created_at}}</h3>
     <h3>Updated at: {{$post->updated_at}}</h3>
     <p><b>Description:</b> {{$post->description}}</p>

@@ -11,15 +11,16 @@
 <body>
 @include('includes.nav2')
 <div class="container">
-  <h2> Posts List</h2>            
+  <h2>Trashed Posts List</h2>            
   <table class="table table-hover">
     <thead>
       <tr>
         <th>Title</th>
         <th>Create Date</th>
-        <th>Update</th>
+        <th>Trash</th>
         <th>Delete</th>
-        <th>Show</th>
+        <th>Restore</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -27,11 +28,9 @@
       <tr>
         <td>{{$post->title}}</td>
         <td>{{$post->created_at}}</td>
-        <td><a href="updatePost/{{ $post->id }}">Edit</a></td>
-        <td><a href="deletePost/{{ $post->id }}" onclick="return confirm('Are you sure you ant to delete')">Delete</a></td>
-        <td><a href="showPost/{{ $post->id }}">Show</a></td>
-        
-        
+        <td><a href="postTrashed/{{ $post->id }}">Trash</a></td>
+        <td><a href="forceDelete/{{ $post->id }}" onclick="return confirm('Are you sure you ant to delete')">Delete</a></td>
+        <td><a href="postRestore/{{ $post->id }}">Restore</a></td>
       </tr>
       @endforeach
     </tbody>
