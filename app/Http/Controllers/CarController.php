@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\car;
+use App\Traits\Common;
 
 class CarController extends Controller
 {
-    private $columns =[
-        'title',
-        'description',
-        'published',
-        ];
+    use Common;
+    // private $columns =[
+    //     'title',
+    //     'description',
+    //     'published',
+    //     ];
     /**
      * Display a listing of the resource.
      */
@@ -43,10 +45,14 @@ class CarController extends Controller
         // $cars -> save();
         // return 'Data entered successfully';
         //$data= $request->only($this->columns);
+        $message = $this->message();
         $data= $request->validate([
             'title'=>'required|string|max:50',
-            'description'=>'required|string'
-        ]);
+            'description'=>'required|string', 
+            'image' => 'required|mimes:png,jpg,jpeg|max:2048',
+        ],$message);
+        $fileName = $this->uploadFile($request->image, 'assets/images');    
+        $data['image'] = $fileName;
         $data['published'] = isset($request-> published);
         car::create ($data);
         return redirect('cars');
@@ -75,7 +81,20 @@ class CarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data= $request->only($this->columns);
+        $message = $this->message();
+        $data= $request->validate([
+            'title'=>'required|string|max:50',
+            'description'=>'required|string',
+            'image' => 'mimes:png,jpg,jpeg|max:3048',
+        ],$message);
+
+        if($request->file('image')){
+        $fileName = $this->uploadFile($request->image, 'assets/images');    
+        $data['image'] = $fileName;
+        }else{
+            $car = car::findOrFail($id);
+            $data['image'] = $car->image;
+        }
         $data['published'] = isset($request-> published);
         car::where('id', $id)->update ($data);
         return redirect('cars');
@@ -103,5 +122,15 @@ class CarController extends Controller
     public function restore(string $id){
         car::where('id', $id)->restore();
         return redirect('cars');
+    }
+    public function message(){
+        return[
+            'title.required'=>' This field is required ',
+            'title.string'=>'Should be string',
+            'description.required'=> ' This field is required',
+            'image.required'=>' You Should choose a file',
+            'image.mimes'=> 'Incorrect image type',
+            'image.max'=> 'Max file size exceeded',
+        ];
     }
 }

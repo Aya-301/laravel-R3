@@ -12,24 +12,31 @@
 @include('includes.nav')
 <div class="container">
   <h2>Add new car data</h2>
-  <form action="{{route('storeCar')}}" method="post">
+  <form action="{{route('storeCar')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
       <label for="title">Title:</label>
       <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" value="{{old('title')}}">
     @error('title')
-    {{$message}}
+    <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     </div>
     <div class="form-group">
       <label for="description">description:</label>
       <textarea class="form-control" name="description" id="" cols="60" rows="3">{{old('description')}}</textarea>
       @error('description')
-    {{$message}}
+      <div class="alert alert-danger">{{ $message }}</div>
     @enderror
     </div>
+    <div class="form-group">
+      <label for="image">Image:</label>
+      <input type="file" class="form-control" id="image" placeholder="Enter image" name="image">
+      @error('image')
+      <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
+    </div>
     <div class="checkbox">
-      <label><input type="checkbox" name="published"> Published me</label>
+      <label><input type="checkbox" name="published" value="1" {{ old('published') ? 'checked' : '' }} > Published me</label>
     </div>
     <button type="submit" class="btn btn-default">Insert</button>
   </form>

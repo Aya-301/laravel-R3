@@ -129,7 +129,7 @@ Route::get('showCar/{id}', [CarController::class,'show'])->name ('showCar');
 //fourth task 
 Route::get('posts', [PostController::class,'index'])->name('posts');
 Route::get('updatePost/{id}',[PostController::class, 'edit']);
-Route::put('update/{id}',[PostController::class, 'update'])->name('update');
+//Route::put('update/{id}',[PostController::class, 'update'])->name('update');
 Route::get('showPost/{id}',[PostController::class, 'show']);
 //sixth lec
 Route::get('deleteCar/{id}',[CarController::class, 'destroy']);
@@ -141,3 +141,12 @@ Route::get('deletePost/{id}', [PostController::class, 'destroy']);
 Route::get('postTrashed', [PostController::class, 'trashed'])-> name('postTrashed');
 Route::get('forceDelete/{id}', [PostController::class, 'forceDelete'])-> name('forceDelete');
 Route::get('postRestore/{id}', [PostController::class, 'restore'])-> name('postRestore');
+//seventh lec
+Route::get('testImg', function(){
+    return view('testImg');
+    });
+Route::get('image', function(){
+    return view('image');
+});
+Route::post('imageUpload', [ExampleController::class,'upload'])->name('imageUpload');
+
