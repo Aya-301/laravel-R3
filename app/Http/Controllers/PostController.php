@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Traits\Common;
 
 class PostController extends Controller
 {
-    //private $columns = ['title', 'description', 'author', 'published'];
+    use Common;
+    //private $columns=[
+    //'title',
+    //'description',
+    //'author',
+    //'published'
+    //];
     /**
      * Display a listing of the resource.
      */
@@ -40,11 +47,15 @@ class PostController extends Controller
         // $posts -> save();
         // return 'Data added successfully';
         //$data= $request->only ($this->columns);
+        $messages = $this->message();
         $data=$request->validate([
             'title'=>'required|string|max:50',
             'description'=>'required|string',
-            'author'=>'required|string|max:50'
-        ]);
+            'author'=>'required|string|max:50',
+            'image'=>'required|mimes:png,jpg,jpeg|max:2048'
+        ],$messages);
+        $fileName = $this->uploadFile($request->image, 'assets/images');
+        $data['image'] = $fileName;
         $data['published']= isset($request->published);
         Post:: create ($data);
         return redirect('posts');
@@ -74,7 +85,19 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data= $request->only ($this->columns);
+        //$data= $request->only ($this->columns);
+        $messages = $this->message();
+        $data=$request->validate([
+            'title'=>'required|string|max:50',
+            'description'=>'required|string',
+            'author'=>'required|string|max:50',
+            'image'=>'sometimes|mimes:png,jpg,jpeg|max:2048'
+        ],$messages);
+        if($request->hasFile('image')){
+            $fileName = $this->uploadFile($request->image, 'assets/images');
+            $data['image'] = $fileName;
+            unlink('assets/images/'. $request->oldImage);
+        }
         $data['published']= isset($request->published);
         Post:: where('id', $id)->update ($data);
         return redirect('posts');
@@ -103,5 +126,15 @@ class PostController extends Controller
     {
         Post::where('id', $id)->restore();
         return redirect('posts');
+    }
+    public function message(){
+        return[
+            'title.required'=>' This field is required ',
+            'title.string'=>'Should be string',
+            'description.required'=> ' This field is required',
+            'image.required'=>' You Should choose a file',
+            'image.mimes'=> 'Incorrect image type',
+            'image.max'=> 'Max file size exceeded',
+        ];
     }
 }

@@ -123,13 +123,13 @@ Route::get('addPost', [PostController::class,'create'])->name('addPost');
 
 //fifth lec
 Route::get('updateCar/{id}', [CarController::class,'edit']);
-Route::put('update/{id}', [CarController::class,'update'])->name('update');
+Route::put('update_car/{id}', [CarController::class,'update'])->name('update_car');
 Route::get('showCar/{id}', [CarController::class,'show'])->name ('showCar');
 
 //fourth task 
 Route::get('posts', [PostController::class,'index'])->name('posts');
 Route::get('updatePost/{id}',[PostController::class, 'edit']);
-//Route::put('update/{id}',[PostController::class, 'update'])->name('update');
+Route::put('update/{id}',[PostController::class, 'update'])->name('update');
 Route::get('showPost/{id}',[PostController::class, 'show']);
 //sixth lec
 Route::get('deleteCar/{id}',[CarController::class, 'destroy']);
@@ -150,3 +150,13 @@ Route::get('image', function(){
 });
 Route::post('imageUpload', [ExampleController::class,'upload'])->name('imageUpload');
 
+//eightth lec
+Route::get('testHome', function(){
+    return view('testHome');
+})->name('testHome');
+Route::get('404', function(){
+    return view('404');
+})->name('404');
+Route::get('contactUs', function(){
+    return view('contactUs');
+})->name('contact');

@@ -12,7 +12,7 @@
 @include('includes.nav2')
 <div class="container">
   <h2>Add new post data</h2>
-  <form action="{{route('storePost')}}" method="post">
+  <form action="{{route('storePost')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
       <label for="title">Title:</label>
@@ -32,6 +32,13 @@
       <label for="author">Author:</label>
       <input type="text" class="form-control" id="author" placeholder="Enter title" name="author"value="{{old('author')}}">
       @error('author')
+    {{$message}}
+    @enderror
+    </div>
+    <div class="form-group">
+      <label for="image"> Image:</label>
+      <input type="file" class="form-control" id="image" placeholder="Enter image" name="image">
+    @error('image')
     {{$message}}
     @enderror
     </div>
