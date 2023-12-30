@@ -32,7 +32,7 @@
     <div class="form-group">
       <label for="image">Image:</label>
       <input type="file" class="form-control" id="image" name="image">
-      <img src="{{ asset('assets/images/'.$car->image) }}" alt="" style="width:100px;">
+      <img src="{{ asset('assets/images/'.$car->image) }}" alt="{{$car->title}}" style="width:100px;">
       @error('image')
       <div class="alert alert-danger">{{ $message }}</div>
       @enderror
