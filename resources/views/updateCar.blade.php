@@ -38,6 +38,17 @@
       @enderror
     </div>
     <input type="hidden" value="{{$car->image}}" name="oldImage">
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <select name="category_id" id="">
+      @foreach($categories as $category)
+        <option value="{{ $category->id }}" @selected(old('id') == $category->category_id)>{{ $category->cat_name }}</option>
+      @endforeach
+      </select>
+      @error('category_id')
+        {{ $message }}
+      @enderror
+    </div>
     <div class="checkbox">
       <label><input type="checkbox" name="published" @checked($car->published)> Published me</label>
     </div>

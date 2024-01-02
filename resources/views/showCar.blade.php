@@ -6,10 +6,11 @@
     <title>Show Car</title>
 </head>
 <body>
-    <h5>{{$car->title}}</h5>
-    <h3>{{$car->description}}</h3>
-    <h2>{{$car->updated_at}}</h2>
-    <h4>{{$car->created_at}}</h4>
+    <h1>Title is: {{$car->title}}</h1>
+    <h2>Description is: {{$car->description}}</h2>
+    <h3>Updated at: {{$car->updated_at}}</h3>
+    <h3>Created at: {{$car->created_at}}</h3>
+    <h4>{{$car->category->cat_name}}</h4>
     <h5>{{$car->published}}</h5>
 </body>
 </html>
