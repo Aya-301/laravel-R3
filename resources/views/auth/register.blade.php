@@ -43,7 +43,7 @@
                             <label for="mobile" class="col-md-4 col-form-label text-md-end">{{ __('Mobile Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" mobile="mobile" value="{{ old('mobile') }}" required autocomplete="mobile" autofocus>
+                                <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" required autocomplete="mobile" autofocus>
 
                                 @error('mobile')
                                     <span class="invalid-feedback" role="alert">
