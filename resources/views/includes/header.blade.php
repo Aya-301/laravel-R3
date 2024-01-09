@@ -9,7 +9,7 @@
 							<ul class="top-link">
 								<li><a href="#">About</a></li>
 								<li><a href="#">Doctors</a></li>
-								<li><a href="{{route('contact')}}">Contact</a></li>
+								<li class="{{ request()->routeIs('contact') ? 'active' : '' }}"><a href="{{route('contact')}}">Contact</a></li>
 								<li><a href="#">FAQ</a></li>
 							</ul>
 							<!-- End Contact -->
@@ -46,16 +46,16 @@
 								<div class="main-menu">
 									<nav class="navigation">
 										<ul class="nav menu">
-											<li class="active"><a href="{{route('testHome')}}">Home <i class="icofont-rounded-down"></i></a>
+											<li class="{{ request()->routeIs('testHome') ? 'active' : '' }}"><a href="{{route('testHome')}}">Home <i class="icofont-rounded-down"></i></a>
 												<ul class="dropdown">
-													<li><a href="{{route('testHome')}}">Home Page 1</a></li>
+													<li class="{{ request()->routeIs('testHome') ? 'active' : '' }}"><a href="{{route('testHome')}}">Home Page 1</a></li>
 												</ul>
 											</li>
-											<li><a href="#">Doctos </a></li>
+											<li><a href="#">Doctros </a></li>
 											<li><a href="#">Services </a></li>
-											<li><a href="#">Pages <i class="icofont-rounded-down"></i></a>
+											<li class="{{ request()->routeIs('404') ? 'active' : '' }}"><a href="#">Pages <i class="icofont-rounded-down"></i></a>
 												<ul class="dropdown">
-													<li><a href="{{route('404')}}">404 Error</a></li>
+													<li class="{{ request()->routeIs('404') ? 'active' : '' }}"><a href="{{route('404')}}">404 Error</a></li>
 												</ul>
 											</li>
 											<li><a href="#">Blogs <i class="icofont-rounded-down"></i></a>
@@ -63,7 +63,7 @@
 													<li><a href="blog-single.html">Blog Details</a></li>
 												</ul>
 											</li>
-											<li><a href="{{route('contact')}}">Contact Us</a></li>
+											<li class="{{ request()->routeIs('contact') ? 'active' : '' }}"><a href="{{route('contact')}}">Contact Us</a></li>
 										</ul>
 									</nav>
 								</div>

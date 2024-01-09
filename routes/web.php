@@ -114,7 +114,7 @@ Route::post('logged', [TaskController::class,'task'])->name ('logged');
 
 // add data to db
 Route::post('storeCar', [CarController::class,'store'])->name ('storeCar');
-Route::get('createCar', [CarController::class,'create'])->name ('createCar');
+Route::get('createCar', [CarController::class,'create'])->middleware('verified')->name ('createCar');
 Route::get('cars', [CarController::class,'index'])->name ('cars');
 
 //third task
@@ -160,3 +160,7 @@ Route::get('404', function(){
 Route::get('contactUs', function(){
     return view('contactUs');
 })->name('contact');
+
+Auth::routes(['verify'=>true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

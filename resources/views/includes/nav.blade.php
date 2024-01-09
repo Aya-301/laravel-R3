@@ -4,9 +4,9 @@
       <a class="navbar-brand" href="#">Home</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="{{Route('cars')}}">Cars</a></li>
-      <li><a href="{{Route ('createCar')}}">Insert Car</a></li>
-      <li><a href="{{Route ('trashed')}}"> Trash</a></li>
+      <li class="{{ request()->routeIs('cars') ? 'active' : '' }}"><a href="{{Route('cars')}}">Cars</a></li>
+      <li class="{{ request()->routeIs('createCar') ? 'active' : '' }}"><a href="{{Route ('createCar')}}">Insert Car</a></li>
+      <li class="{{ request()->routeIs('trashed') ? 'active' : '' }}"><a href="{{Route ('trashed')}}"> Trash</a></li>
       <li><a href="#">Page 3</a></li>
     </ul>
   </div>

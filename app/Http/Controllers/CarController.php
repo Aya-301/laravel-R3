@@ -90,7 +90,7 @@ class CarController extends Controller
             'title'=>'required|string|max:50',
             'description'=>'required|string',
             'image' => 'sometimes|mimes:png,jpg,jpeg|max:2048',
-            'category_id' => 'sometimes'
+            'category_id' => 'required'
         ],$message);
 
         if($request->hasFile('image')){
