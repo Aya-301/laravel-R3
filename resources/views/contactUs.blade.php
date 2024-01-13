@@ -25,7 +25,8 @@ Contact Info
 								<h2>Contact With Us</h2>
 								<p>If you have any questions please fell free to contact with us.</p>
 								<!-- Form -->
-								<form class="form" method="post" action="mail/mail.php">
+								<form class="form" method="post" action="{{route('sendmail')}}">
+									@csrf
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group">
@@ -49,7 +50,7 @@ Contact Info
 										</div>
 										<div class="col-lg-12">
 											<div class="form-group">
-												<textarea name="message" placeholder="Your Message" required=""></textarea>
+												<textarea name="content" placeholder="Your Message" required=""></textarea>
 											</div>
 										</div>
 										<div class="col-12">

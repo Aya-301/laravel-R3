@@ -346,8 +346,8 @@
 					<div class="col-lg-6  col-12">
 						<!-- Start Newsletter Form -->
 						<div class="subscribe-form ">
-							<form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
-								<input name="EMAIL" placeholder="Your email address" class="common-input" onfocus="this.placeholder = ''"
+							<form action="{{route('sendmail')}}" method="get" target="_blank" class="newsletter-inner">
+								<input name="email" placeholder="Your email address" class="common-input" onfocus="this.placeholder = ''"
 									onblur="this.placeholder = 'Your email address'" required="" type="email">
 								<button class="btn">Subscribe</button>
 							</form>

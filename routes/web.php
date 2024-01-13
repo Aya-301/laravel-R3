@@ -5,7 +5,9 @@ use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\Mailsend;
+use App\Mail\sendmail;
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -100,7 +102,7 @@ Route::prefix ('Blog')->group (function(){
 // Route::post('logged', function(){
 //     return 'you are logged in';
 // })->name ('logged');
-// Route::get('control', [ExampleController::class,'show']);
+ Route::get('test10', [ExampleController::class,'createSession']);
 
 
 // second task
@@ -157,10 +159,9 @@ Route::get('testHome', function(){
 Route::get('404', function(){
     return view('404');
 })->name('404');
-Route::get('contactUs', function(){
-    return view('contactUs');
-})->name('contact');
+Route::get('contactUs',[Mailsend::class,'sendemail'])->name('contact');
 
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('sendmail',[Mailsend::class,'sendemail'])->name('sendmail');

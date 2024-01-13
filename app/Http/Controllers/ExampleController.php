@@ -17,4 +17,9 @@ class ExampleController extends Controller
         $request->image->move($path, $file_name);
         return 'Uploaded';
     }
+
+    public function createSession(){
+        session()->put('testSession', 'My First session value');
+        return ('Session Created ') . session('testSession');
+    }
 }
