@@ -8,21 +8,18 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Adress;
 
 class sendmail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $name, $email, $phone, $subject, $content;
+    public $data;
     /**
      * Create a new message instance.
      */
-    public function __construct($name, $email, $phone, $subject, $content)
+    public function __construct($data)
     {
-        $this->name = $name;
-        $this->email = $email;
-        $this->phone = $phone;
-        $this->subject = $subject;
-        $this->content = $content;
+        $this->data= $data;
     }
 
     /**
@@ -31,9 +28,11 @@ class sendmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Sendmail',
+            from: new Adress($this->data['email'], $this->data['name']),
+            subject: $this->data['subject']
         );
     }
+
     /**
      * Get the message content definition.
      */
@@ -42,12 +41,7 @@ class sendmail extends Mailable
         return new Content(
             markdown: 'emails.sendmail',
             with:[
-                'name'=>$this->name,
-                'email'=>$this->email,
-                'phone'=>$this->phone,
-                'subject'=>$this->subject,
-                'content'=>$this->content,
-
+                $this->data
             ]
         );
     }

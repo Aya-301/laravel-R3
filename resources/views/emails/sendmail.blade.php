@@ -1,8 +1,8 @@
 <x-mail::message>
-Sender: {{$name}} <br>
-Email: {{$email}} <br>
-Phone: {{$phone}} <br>
-Subject: {{$subject}} <br>
-Message: {{$content}} <br>
+Sender: {{$data['name']}} <br>
+Email: {{$data['email']}} <br>
+Phone: {{$data['phone']}} <br>
+Subject: {{$data['subject']}} <br>
+Message: {{$data['content']}} <br>
 Thanks <br>
 </x-mail::message>

@@ -14,14 +14,16 @@ class Mailsend extends Controller
     }
     public function sendemail(Request $request)
     {
-            Mail::to( 'yoya@email.com')->send( new sendmail(
-                $request->name,
-                $request->email,
-                $request->phone,
-                $request->subject,
-                $request->content,
-
-            ));
+        $data= ([
+            'name'=>'required|string|max:150',
+            'email'=>'required|string|max:20', 
+            'phone' => 'required|string|max:50',
+            'subject' => 'required|string|max:100',
+            'content' => 'required'
+        ]);
+            Mail::to('yoya@email.com')->send(
+            new sendmail($data)
+        );
             return "mail sent!";
     }
 }
