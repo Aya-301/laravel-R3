@@ -115,6 +115,11 @@ Route::post('logged', [TaskController::class,'task'])->name ('logged');
 //fourth lec
 
 // add data to db
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
 Route::post('storeCar', [CarController::class,'store'])->name ('storeCar');
 Route::get('createCar', [CarController::class,'create'])->middleware('verified')->name ('createCar');
 Route::get('cars', [CarController::class,'index'])->name ('cars');
@@ -143,6 +148,7 @@ Route::get('deletePost/{id}', [PostController::class, 'destroy']);
 Route::get('postTrashed', [PostController::class, 'trashed'])-> name('postTrashed');
 Route::get('forceDelete/{id}', [PostController::class, 'forceDelete'])-> name('forceDelete');
 Route::get('postRestore/{id}', [PostController::class, 'restore'])-> name('postRestore');
+});
 //seventh lec
 Route::get('testImg', function(){
     return view('testImg');
