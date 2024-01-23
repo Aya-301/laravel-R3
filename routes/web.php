@@ -121,7 +121,7 @@ Route::group(
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){
 Route::post('storeCar', [CarController::class,'store'])->name ('storeCar');
-Route::get('createCar', [CarController::class,'create'])->middleware('verified')->name ('createCar');
+Route::get('createCar', [CarController::class,'create'])->name ('createCar');
 Route::get('cars', [CarController::class,'index'])->name ('cars');
 
 //third task
